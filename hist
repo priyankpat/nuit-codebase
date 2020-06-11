@@ -1,0 +1,218 @@
+    1  cd Documents/
+    2  ls
+    3  clear
+    4  mkdir vision
+    5  cd vision/
+    6  pip3
+    7  pip3 install tensorflow
+    8  sudo apt-get install libatlas-base-dev
+    9  sudo pip3 install pillow lxml jupyter matplotlib cython
+   10  sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
+   11  sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+   12  sudo apt-get install libxvidcore-dev libx264-dev
+   13  sudo apt-get install qt4-dev-tools libatlas-base-dev
+   14  sudo pip3 install opencv-python
+   15  sudo apt-get install protobuf-compiler
+   16  protoc --version
+   17  ls
+   18  mkdir tensorflow1
+   19  cd tensorflow1/
+   20  git clone --depth 1 https://github.com/tensorflow/models.git
+   21  nano ~/.bashrc 
+   22  cd models/research/
+   23  protoc object_detection/protos/*.proto --python_out=.
+   24  cd object_detection/
+   25  ls
+   26  wget http://download.tensorflow.org/models/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz
+   27  tar -xzvf ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz
+   28  python3 Object_detection_picamera.py --usbcam
+   29  ls
+   30  python3 Object_detection_picamera.py --usbcam
+   31  wget https://raw.githubusercontent.com/EdjeElectronics/TensorFlow-Object-Detection-on-the-Raspberry-Pi/master/Object_detection_picamera.py
+   32  python3 Object_detection_picamera.py --usbcam
+   33  cd Documents/vision/tensorflow1
+   34  ls
+   35  cd models/
+   36  ls
+   37  cd research/object_detection/
+   38  python3 Object_detection_picamera.py --usbcam
+   39  ..
+   40  cd ..
+   41  cd ../../..
+   42  git clone https://github.com/mesutpiskin/id-card-detector.git
+   43  pip3 install -r requirements.txt
+   44  cd id-card-detector/
+   45  pip3 install -r requirements.txt
+   46  pip3 install gazeml-0.1
+   47  ..
+   48  cd ..
+   49  git clone https://github.com/swook/GazeML.git
+   50  cd GazeML/
+   51  python3 setup.py install
+   52  sudo python3 setup.py install
+   53  cd Documents/
+   54  ls
+   55  cd vision/
+   56  ls
+   57  cd id-card-detector/
+   58  pip3 install -r requirements.txt
+   59  nano requirements.txt 
+   60  pip3 install -r requirements.txt
+   61  cd Documents/opencv/
+   62  sudo apt -y update
+   63  sudo apt -y upgrade
+   64  cd ..
+   65  chmod +x ./oslibs.sh 
+   66  ./oslibs.sh 
+   67  python3
+   68  python3 -m venv p3cv4
+   69  ls
+   70  p3cv4/
+   71  cd p3cv4/
+   72  ls
+   73  cd lib/
+   74  ls
+   75  cd ..
+   76  cd /bin
+   77  ls
+   78  cd ~/Documents/p3cv4/
+   79  cd bin
+   80  ls
+   81  ./activate
+   82  chmod +x ./activate
+   83  ./activate
+   84  sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/g' /etc/dphys-swapfile
+   85  sudo /etc/init.d/dphys-swapfile stop
+   86  sudo /etc/init.d/dphys-swapfile start
+   87  pip install numpy dlib
+   88  deactivate
+   89  ls
+   90  ./activate deactivate
+   91  git clone https://github.com/opencv/opencv.git
+   92  cd opencv
+   93  git checkout 4.1.2
+   94  cd ..
+   95  git clone https://github.com/opencv/opencv_contrib.git
+   96  cd opencv_contrib/
+   97  git checkout 4.1.2 
+   98  cd ..
+   99  cd opencv
+  100  ls
+  101  clear
+  102  mkdir build
+  103  cd build
+  104  clear
+  105  whereis python3
+  106  ls
+  107  cd ../..
+  108  cd ..
+  109  ls
+  110  lib
+  111  cd lib
+  112  cd python3.7/site-packages/
+  113  pwd
+  114  cd ../../../
+  115  cd bin/opencv
+  116  ls
+  117  ..
+  118  ls
+  119  cd ..
+  120  ls
+  121  opencv_contrib/
+  122  ls
+  123  cd opencv
+  124  cd ../opencv_contrib/modules/
+  125  pwd
+  126  cmake -D CMAKE_BUILD_TYPE=RELEASE \                 ✔  10007  09:37:5
+  127  cd ../../opencv/build/
+  128  cmake -D CMAKE_BUILD_TYPE=RELEASE \                 ✔  10007  09:37:5
+  129  cmake -D CMAKE_BUILD_TYPE=RELEASE \                
+  130  cmake -D CMAKE_BUILD_TYPE=RELEASE     -D CMAKE_INSTALL_PREFIX=/home/pi/Documents/p3cv4     -D OPENCV_EXTRA_MODULES_PATH=/home/pi/Documents/p3cv4/bin/opencv_contrib/modules     -D PYTHON3_LIBRARY=`python -c 'import subprocess ; import sys ; s = subprocess.check_output("python-config --configdir", shell=True).decode("utf-8").strip() ; (M, m) = sys.version_info[:2] ; print("{}/libpython{}.{}.dylib".format(s, M, m))'`     -D PYTHON3_INCLUDE_DIR=`python -c 'import distutils.sysconfig as s; print(s.get_python_inc())'`     -D PYTHON3_EXECUTABLE=$VIRTUAL_ENV/bin/python     -D OPENCV_PYTHON3_INSTALL_PATH=/home/pi/Documents/p3cv4/lib/python3.7/site-packages     -D BUILD_opencv_python2=OFF     -D BUILD_opencv_python3=ON     -D INSTALL_PYTHON_EXAMPLES=ON     -D INSTALL_C_EXAMPLES=OFF     -D OPENCV_ENABLE_NONFREE=ON     -D BUILD_EXAMPLES=ON ..
+  131  cmake -D CMAKE_BUILD_TYPE=RELEASE     -D CMAKE_INSTALL_PREFIX=/usr/local     -D OPENCV_EXTRA_MODULES_PATH=/home/pi/Documents/p3cv4/bin/opencv_contrib/modules     -D PYTHON3_LIBRARY=`python -c 'import subprocess ; import sys ; s = subprocess.check_output("python-config --configdir", shell=True).decode("utf-8").strip() ; (M, m) = sys.version_info[:2] ; print("{}/libpython{}.{}.dylib".format(s, M, m))'`     -D PYTHON3_INCLUDE_DIR=`python -c 'import distutils.sysconfig as s; print(s.get_python_inc())'`     -D PYTHON3_EXECUTABLE=$VIRTUAL_ENV/bin/python     -D OPENCV_PYTHON3_INSTALL_PATH=/home/pi/Documents/p3cv4/lib/python3.7/site-packages     -D BUILD_opencv_python2=OFF     -D BUILD_opencv_python3=ON     -D INSTALL_PYTHON_EXAMPLES=ON     -D INSTALL_C_EXAMPLES=OFF     -D OPENCV_ENABLE_NONFREE=ON     -D BUILD_EXAMPLES=ON ..
+  132  make -j$(nproc)
+  133  make install
+  134  mkdir /usr/local/share/licenses/opencv4
+  135  mkdir /usr/local/share/licenses/
+  136  sudo mkdir /usr/local/share/licenses/
+  137  sudo mkdir /usr/local/share/licenses/opencv4
+  138  make install
+  139  sudo make install
+  140  sudo sed -i 's/CONF_SWAPSIZE=1024/CONF_SWAPSIZE=100/g' /etc/dphys-swapfile
+  141  sudo /etc/init.d/dphys-swapfile stop
+  142  sudo /etc/init.d/dphys-swapfile start
+  143  echo "sudo modprobe bcm2835-v4l2" >> ~/.profile
+  144  workon p2cv4
+  145  p3cv4
+  146  workon p3cv4
+  147  ipython
+  148  python3
+  149  workon p3cv4
+  150  ls
+  151  ../
+  152  cd ../../
+  153  ls
+  154  ./activate 
+  155  python3
+  156  LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 python3
+  157  nano ~/.bashrc 
+  158  sudo nano /etc/profile
+  159  sudo reboot
+  160  sudo apt-get -y purge wolfram-enigne
+  161  sudo apt-get -y purge wolfram-engine
+  162  sudo apt-get -y purge libreoffice*
+  163  sudo apt-get -y clean
+  164  sudo apt-get -y autoremove
+  165  rm -rf opencv/build
+  166  rm -rf opencv_contrib/build
+  167  mkdir installation
+  168  mkdir installation/OpenCV-"$cvVersion"
+  169  ls
+  170  ls installation/
+  171  rm -rf installation/OpenCV-/
+  172  ls installation/
+  173  mkdir installation/opencv
+  174  rm -rf installation/
+  175  Documents/
+  176  cd Documents/
+  177  clear
+  178  mkdir opencv
+  179  ifconfig
+  180  cd Nuit/
+  181  python3 ./main.py 
+  182  source ~/.bashrc 
+  183  python3
+  184  python3 ./main.py 
+  185  pip
+  186  pip install qdarkstyle
+  187  pip install PyQt4
+  188  pip install imutils
+  189  pip install numpy
+  190  python3 ./main.py 
+  191  cd Documents/
+  192  touch oslibs.sh
+  193  nano oslibs.sh 
+  194  touch makescripe
+  195  nano makescripe 
+  196  python3 /home/pi/Documents/Nuit/main.py
+  197  cd ~/Documents/Nuit/
+  198  python ./main.py 
+  199  python3 ./main.py 
+  200  sudo nano /etc/profile
+  201  sudo reboot
+  202  nano ~/.bashrc 
+  203  sudo nano /etc/profile
+  204  sudo reboot
+  205  ls
+  206  exit
+  207  cd ~/Documents/Nuit/
+  208  python3
+  209  cat main.py 
+  210  python3
+  211  cat /etc/rc.local 
+  212  cat ~/.bashrc 
+  213  cat ~/.profile 
+  214  cat ~/.bashrc 
+  215  cat ~/.profile 
+  216  cat /etc/profile
+  217  pip install PyQt4
+  218  history
