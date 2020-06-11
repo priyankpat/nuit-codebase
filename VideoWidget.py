@@ -6,12 +6,15 @@ import time
 import imutils
 import random
 from file import File
+from imutils.video import FPS
 
 class VideoWidget(QtWidgets.QWidget):
-    def __init__(self, category, registry, hist=None, width=200, height=300, aspect_ratio=False, parent=None, deque_size=1):
+    def __init__(self, category, registry, hist=None, width=200, height=300, aspect_ratio=False, parent=None,
+                 deque_size=1):
         super(VideoWidget, self).__init__(parent)
 
         self.deque = deque(maxlen=deque_size)
+        self.fps = 0
 
         self.offset = 0
         self.screen_width = width - self.offset
@@ -90,6 +93,7 @@ class VideoWidget(QtWidgets.QWidget):
             f.add(self.category.name)
 
             self.capture = cv2.VideoCapture(self.source.path)
+            self.fps = FPS().start()
             self.active = True
 
     def load_stream(self):
@@ -105,8 +109,13 @@ class VideoWidget(QtWidgets.QWidget):
 
                     if status:
                         self.deque.append(frame)
+
+                        self.fps.stop()
+                        print("[INFO] elasped time: {:.2f}".format(self.fps.elapsed()))
+                        print("[INFO] approx. FPS: {:.2f}".format(self.fps.fps()))
                     else:
                         print('Not active status')
+
                         self.capture.release()
                         self.active = False
 
@@ -156,9 +165,14 @@ class VideoWidget(QtWidgets.QWidget):
                 self.frame = cv2.resize(frame, (self.screen_width, self.screen_height))
 
             # convert to pixmap and add to video frame
+            # aligned = cv2.resize(self.frame, (self.frame.shape[1] // 4 * 4, self.frame.shape[0] // 4 * 4), fx=0, fy=0,
+            #                      interpolation=cv2.INTER_NEAREST)
+            # rgb = cv2.cvtColor(aligned, cv2.COLOR_BGR2RGB)
+            # self.img = QtGui.QImage(rgb.data, rgb.shape[1], rgb.shape[0], QtGui.QImage.Format_RGB888).rgbSwapped()
             self.img = QtGui.QImage(self.frame, self.frame.shape[1], self.frame.shape[0], QtGui.QImage.Format_RGB888).rgbSwapped()
             self.pix = QtGui.QPixmap.fromImage(self.img)
             self.video_frame.setPixmap(self.pix)
+            self.fps.update()
 
     def get_video_frame(self):
         return self.video_frame
