@@ -89,6 +89,7 @@ textarea {
 html,
 body {
   height: 100%;
+  background-color: #000;
 }
 
 .main-container {
@@ -103,6 +104,7 @@ body {
 .right-content {
   display: flex;
   flex: 1;
+  padding: 16px;
 }
 
 .left-content video,
